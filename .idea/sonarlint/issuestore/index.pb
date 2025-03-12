@@ -22,3 +22,11 @@ J
 2.1/src/Variable/Var7.java,2/5/25be948abd20c0638d4e7c13f3bc4a713d058311
 J
 2.1/src/Variable/Var8.java,4/e/4e507b36ebd89f6e7338a86a8bcc465bc28237fd
+L
+2.1/src/Variable/VarEx1.java,c/6/c612bf2a57cae847329abf6dfc89b6beac25dc8e
+O
+2.1/src/Variable/ex/VarEx1.java,3/b/3bfc0a248465ef42db468103e6ca9bbbd9ba63b2
+O
+2.1/src/Variable/ex/VarEx2.java,0/5/0564804c29f8889cffe3bee3b9fc8cb8dc5772be
+O
+2.1/src/Variable/ex/VarEx3.java,8/b/8b007047a96bcf27bd154bcbee291eb400a13c25

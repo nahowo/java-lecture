@@ -118,3 +118,37 @@ P
  source/src/casting/Casting2.java,4/d/4d5e6b8c1b15c492db30d7a53a60608d1f01f672
 P
  source/src/casting/Casting3.java,c/2/c2e171a96c7dd27ea5bd20bb0e2fed44111728dc
+P
+ source/src/scanner/Scanner1.java,5/8/58f30935516d911370686ee76684393af7e9de93
+P
+ source/src/scanner/Scanner2.java,9/c/9cf035321d98d8a439f65b7dcbc0ce28f6262c0f
+P
+ source/src/scanner/Scanner3.java,9/e/9e8e6746e0bc4852748918046b93df2d019ff807
+P
+ source/src/scanner/Scanner4.java,6/c/6c5ffc5cc57da9b73eec26bceba717f207ed5769
+P
+ source/src/scanner/Scanner5.java,a/a/aa4204fba92a5bdd47ebd439a850867c7b766122
+O
+source/src/scanner/Scanner.java,b/7/b794a63fa50ba391b0d02eb5b49f3307d9f1fd79
+P
+ source/src/scanner/Scanner6.java,e/b/eb169c45117aaf119a44e55fda07bc7801447e26
+P
+ source/src/scanner/Scanner7.java,8/2/829fdaccb35517158e188f14c6f924ebb930fa26
+P
+ source/src/scanner/Scanner8.java,5/4/54e9855febb519c0650a15cee4bc307d78991576
+P
+ source/src/scanner/Scanner9.java,a/b/abb85376b34ce78fd008d3cf679fe70693498165
+Q
+!source/src/scanner/Scanner10.java,8/8/888dd2629eb057fcb395870e96622519ee3eeda1
+Q
+!source/src/scanner/Scanner11.java,d/4/d49e4ce14769ec88f106af0a8931caaeb6947665
+Q
+!source/src/scanner/Scanner12.java,f/5/f5ccb52335bb962f02350890c854e5fa61199d37
+Q
+!source/src/scanner/Scanner13.java,3/3/333ce60f7adfc3462010a7b3902e623a822d71ef
+Q
+!source/src/scanner/Scanner14.java,9/f/9fea5bd57c4803418deb025719c4a0c53b4e0f25
+Q
+!source/src/scanner/Scanner15.java,3/f/3f23b3f478f8ad16544d22e224a0510cb7904eef
+Q
+!source/src/scanner/Scanner16.java,6/e/6e7823b6ee4adf590db62eb2f71874661107955c

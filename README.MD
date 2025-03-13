@@ -303,6 +303,10 @@ public static void main(String[] args) {
 - **서로 다른 타입의 계산은 큰 범위로 자동 형변환이 일어난다.** 
 
 # 섹션 8: 훈련
+### Scanner
+- `new Scanner(System.in)`으로 스캐너 객체를 사용할 수 있다. 
+- `scanner.nextLine()`, `scanner.nextInt()`, `scanner.nextDouble()`등 타입에 맞는 값을 입력받을 수 있다.
+- `scanner.nextInt()` 등을 사용할 때 '\n'이 입력으로 들어가는 경우가 있으니 조심하자. 
 
 # 섹션 9: 배열
 

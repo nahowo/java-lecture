@@ -104,3 +104,17 @@ O
 source/src/loop/ex/LoopEx4.java,b/f/bf82cec0cee47056bc4eabdf6f9be968edf83f7a
 O
 source/src/loop/ex/LoopEx5.java,2/c/2cf9a969a8ff9370f6d1afd299edeced35439c25
+L
+source/src/scope/Scope1.java,5/6/56e77417dccbb9219606efbe11e05c0f80fcd5d3
+L
+source/src/scope/Scope2.java,7/7/77bd0de4437909cd6749508dd5c6ca9afdc754ae
+L
+source/src/scope/Scope3.java,e/6/e61bd859950d1ef3d3d2e8a52d3d5f014415a819
+L
+source/src/scope/Scope4.java,3/5/35e2dd22a54dcdb7591b156afd1acde554bf0db1
+P
+ source/src/casting/Casting1.java,a/5/a5c6d7b188863bc544c61db162e8ad2eb0526936
+P
+ source/src/casting/Casting2.java,4/d/4d5e6b8c1b15c492db30d7a53a60608d1f01f672
+P
+ source/src/casting/Casting3.java,c/2/c2e171a96c7dd27ea5bd20bb0e2fed44111728dc

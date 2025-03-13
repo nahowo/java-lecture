@@ -1,0 +1,21 @@
+
+ 	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8ã‡†€Ù2J$39b70cc7-34d8-41ed-8654-af1261255e56
+•
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(Çµí‘8ê‡†€Ù2J$766761ce-e322-4d5c-bc4f-ca8c8227df02
+r	java:S106"+Replace this use of System.out by a logger.(Ø¨¶‚úÿÿÿÿ8ğ‡†€Ù2J$37aebd59-2725-4329-a0dd-76b34073c9fc
+r	java:S106	"+Replace this use of System.out by a logger.(—á§¿şÿÿÿÿ8ğ‡†€Ù2J$837b8b6e-3da2-4523-9afa-1a52e744c6c3
+r	java:S106
+"+Replace this use of System.out by a logger.(Ÿ™‰¢øÿÿÿÿ8ñ‡†€Ù2J$312e7301-a4e5-41f4-83d7-ef9f38141b13
+m	java:S106"+Replace this use of System.out by a logger.(“õ£û8ñ‡†€Ù2J$d73109a2-b983-4dc5-addd-8aca6cb99120
+r	java:S106"+Replace this use of System.out by a logger.(Ã¢ÂÜøÿÿÿÿ8ñ‡†€Ù2J$6e5a62a5-48e2-40ec-887e-240af207ab84
+m	java:S106"+Replace this use of System.out by a logger.(…¹ì»8ò‡†€Ù2J$34efe680-5c75-4fd5-8562-9a886836e236
+~
+java:S6880"6Replace the chain of if/else with a switch expression.(òŠçùÿÿÿÿ8ó‡†€Ù2J$65be4c24-2351-4eb3-942d-ce735a5df5c4
+r	java:S106"+Replace this use of System.out by a logger.(Âïşÿÿÿÿ8ó‡†€Ù2J$328e75c9-a1ac-40c1-b003-f28d3c70fcb9
+r	java:S106!"+Replace this use of System.out by a logger.(°£ÊÆşÿÿÿÿ8ó‡†€Ù2J$76b4eb9a-3679-44e2-b04d-b9e142072080
+m	java:S106#"+Replace this use of System.out by a logger.(’Ÿ°…8ô‡†€Ù2J$df2f8312-8f41-4b19-bce8-93e9a9e814e1
+m	java:S106)"+Replace this use of System.out by a logger.(‚Ó¹Ÿ8ô‡†€Ù2J$48208969-067b-471b-8dc6-f5474bf59977
+r	java:S106,"+Replace this use of System.out by a logger.(ƒœÖ…øÿÿÿÿ8õ‡†€Ù2J$904f27d4-cfa1-40b5-89fa-87d809667984
+r	java:S106."+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8õ‡†€Ù2J$98f70408-8a28-423e-b654-11c0d2c4c544
+r	java:S1061"+Replace this use of System.out by a logger.(Ùİ–±úÿÿÿÿ8ö‡†€Ù2J$ffc37f6d-ad0d-4a46-828f-67d86fa7cdf2
+m	java:S1064"+Replace this use of System.out by a logger.(®‘§ó8ö‡†€Ù2J$3da30822-ce16-4c26-be9a-d09b928ddc9e

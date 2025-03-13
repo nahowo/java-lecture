@@ -152,3 +152,27 @@ Q
 !source/src/scanner/Scanner15.java,3/f/3f23b3f478f8ad16544d22e224a0510cb7904eef
 Q
 !source/src/scanner/Scanner16.java,6/e/6e7823b6ee4adf590db62eb2f71874661107955c
+L
+source/src/array/Array1.java,a/f/af1f4f6734ba5592f977939777dcb3f776928eba
+L
+source/src/array/Array2.java,8/6/8609f07953f8fc2f4836b4ab9d8324313ce8be04
+M
+source/src/array/Arrary3.java,c/f/cf6558fd42f2dd20d1d07221000a0f0f787aa2af
+R
+"source/src/array/EnhancedFor1.java,9/7/9770fe45af1611777bd2f2edb4a8c24fc590bd08
+O
+source/src/array/ex/ArrEx1.java,1/3/13d7f8fc3fc3710878d0e86522ca08ab75c352df
+O
+source/src/array/ex/ArrEx2.java,e/8/e85d0209d79929ab08feb765a365c176ac1799e9
+O
+source/src/array/ex/ArrEx3.java,3/5/350b723c46a6f6d259d77c1a386689534e1d9360
+O
+source/src/array/ex/ArrEx4.java,a/d/ad3e64bddf774f9e34c42b1e053a9096c17fde96
+O
+source/src/array/ex/ArrEx5.java,1/9/1935319764ffe9f064bb14b71612b164ef2b8c0a
+O
+source/src/array/ex/ArrEx6.java,4/2/4291997cdd29e3590e59257d66876a3996a94cec
+R
+"source/src/variable/ex/VarEx3.java,3/c/3c181fc76bb00317cbfc44417b7f3c4a47fa5c84
+O
+source/src/array/ex/ArrEx7.java,6/1/61d0fac2107ebe8479352e146f379d89df497e07

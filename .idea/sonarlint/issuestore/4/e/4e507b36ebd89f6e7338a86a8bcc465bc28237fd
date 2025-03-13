@@ -1,26 +1,0 @@
-
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(—ıµô8®ÂÈÓØ2J$7ccb43a2-30b5-4d13-ab03-6c9079e7d011
-x
-java:S1854"5Remove this useless assignment to local variable "d".(ì¦§¸8ä«ÊÓØ2J$aeb26166-15e7-4eb2-8c96-5d057d180ef1
-x
-java:S1854"5Remove this useless assignment to local variable "f".(Óß¯¤8å«ÊÓØ2J$f0aea704-2020-4834-8d26-fb36bbbcbbf0
-x
-java:S1854	"5Remove this useless assignment to local variable "l".(êç©Á8´ÂÈÓØ2J$f6c0cea5-adae-4d07-9347-0cd26ddee0cd
-}
-java:S1854"5Remove this useless assignment to local variable "i".(ıÏ³‡úÿÿÿÿ8´ÂÈÓØ2J$e53a991a-48ec-4db0-9736-e201c68857fa
-}
-java:S1854"5Remove this useless assignment to local variable "s".(¥¿¾¯üÿÿÿÿ8´ÂÈÓØ2J$648961d1-e7a3-421c-b379-45d5de91cb93
-}
-java:S1854"5Remove this useless assignment to local variable "b".(üòÇ ıÿÿÿÿ8´ÂÈÓØ2J$c682c5dc-f85d-4435-ae63-703236d8be07
-n
-java:S1481"&Remove this unused "b" local variable.(üòÇ ıÿÿÿÿ8¶ÂÈÓØ2J$4b7fd2f8-ffe6-415a-81e5-d58e2a490f65
-n
-java:S1481"&Remove this unused "s" local variable.(¥¿¾¯üÿÿÿÿ8¶ÂÈÓØ2J$411a48f0-565c-492f-88f3-517f3590a612
-n
-java:S1481"&Remove this unused "i" local variable.(ıÏ³‡úÿÿÿÿ8¶ÂÈÓØ2J$7b521e60-6b86-4c19-ac2c-13d96aeb480f
-i
-java:S1481	"&Remove this unused "l" local variable.(êç©Á8·ÂÈÓØ2J$573968a9-0629-4d3f-b496-f100ba37ef4f
-i
-java:S1481"&Remove this unused "f" local variable.(Óß¯¤8ê«ÊÓØ2J$171db425-707a-4454-864e-42f00add6997
-i
-java:S1481"&Remove this unused "d" local variable.(ì¦§¸8ê«ÊÓØ2J$8bf6fb50-ca2a-4dc1-8c90-27edaa668ea0

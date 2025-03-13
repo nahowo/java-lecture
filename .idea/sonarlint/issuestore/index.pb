@@ -80,3 +80,27 @@ O
 source/src/cond/ex/CondEx6.java,3/c/3ca33d1fcf5cf642950b98164562a17fb5dbcd31
 O
 source/src/cond/ex/CondEx7.java,8/0/80c8b5fd9830f11bd2a44bc61acc4a49d11a19f2
+K
+source/src/loop/While1.java,5/4/54cc2a919ac536d617d88c21816f105c8d08a998
+K
+source/src/loop/While2.java,6/f/6f103b3f767c44050e098b7417d4bf977c97b6d2
+M
+source/src/loop/DoWhile1.java,e/5/e594c0cce926d0457c4ba55e1d58bde4df2a4a0f
+K
+source/src/loop/Break1.java,c/a/cac73aad4bc4f10199da9b6ea31185990c4d879c
+N
+source/src/loop/Continue1.java,a/d/ada1d7feada6f491cd0f832e6dede6e2a72da60e
+I
+source/src/loop/For1.java,3/0/305d22bf17a61b722338a3baec9698272cfa8e90
+I
+source/src/loop/For2.java,a/3/a3f7a13024f8fe6945f1489491d49988fa149935
+O
+source/src/loop/ex/LoopEx1.java,9/d/9d9b44eca7ddc6599bb9940ff564d0aa088e58a0
+O
+source/src/loop/ex/LoopEx2.java,9/3/931ef6b498c3adf8f4c7fb24c887ad6cd3032356
+O
+source/src/loop/ex/LoopEx3.java,c/8/c8853752da0d88457578ca1e38a51aa175491295
+O
+source/src/loop/ex/LoopEx4.java,b/f/bf82cec0cee47056bc4eabdf6f9be968edf83f7a
+O
+source/src/loop/ex/LoopEx5.java,2/c/2cf9a969a8ff9370f6d1afd299edeced35439c25

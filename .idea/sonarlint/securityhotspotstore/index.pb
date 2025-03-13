@@ -38,3 +38,45 @@ W
 'source/src/Operator/ex/OperatorEx2.java,a/a/aaccee8c15b9513eeb8f2282588ee09db6f47dc2
 W
 'source/src/Operator/ex/OperatorEx3.java,a/4/a4760ff25a4fdb47da102daeaaa0eede67677f30
+Q
+!source/src/operator/Logical1.java,f/2/f2f58f46d081bf2cb92d1df0a3c61c12aaca2ec4
+W
+'source/src/operator/ex/OperatorEx2.java,a/c/ac31a034ea738a351bd4b308e28daced0c73b5fb
+N
+source/src/operator/Comp1.java,8/4/84582b7f1e6035f04efc7830a41fc8b358eae01f
+W
+'source/src/operator/ex/OperatorEx3.java,a/4/a4cf259f72fe17235f5d78e7008a54a68a26f5a7
+U
+%source/src/operator/OperatorAdd2.java,2/f/2f41362bb695683c23ee2e7480431f7263564bbc
+N
+source/src/operator/Comp2.java,6/c/6c3abbaa18dc6feef896ad5bb5ab96b8dedc0409
+Q
+!source/src/operator/Logical2.java,c/3/c3cb567db6681c3ba942fdfafc1ef9ee6f706774
+W
+'source/src/operator/ex/OperatorEx1.java,4/a/4a7b8419fe28ddca27a5360923c442a935da49b2
+P
+ source/src/operator/Assign1.java,3/9/397774eeb6a093555fd65db797d12af3bbfbbad9
+H
+source/src/cond/If1.java,5/0/506b49585ab3a505009b16a1d5fd09fc47ceea25
+H
+source/src/cond/If2.java,f/5/f51d677175d975b73c4a024c604284d1c2d13e8a
+L
+source/src/cond/Switch1.java,3/d/3d510066f46fdfe81e3611a955a6fe7fea229a00
+L
+source/src/cond/Switch2.java,d/7/d701af644a6db7dd815e0518bfadb573d59080f5
+L
+source/src/cond/CondOp1.java,1/0/10c3cfa5da7c53606c94fb6c4f97883bb5e7040d
+O
+source/src/cond/ex/CondEx1.java,6/4/643762ea6e79b9979d7de52b520f20892081a4a5
+O
+source/src/cond/ex/CondEx2.java,4/8/4821678ad97aa78de64a790af3e87eb2a193e78f
+O
+source/src/cond/ex/CondEx3.java,0/2/02a734a529bb4deab93109f98985c77c5377acdb
+O
+source/src/cond/ex/CondEx4.java,3/e/3e974e371d08e884ce1aae9f9ec01832e1b861be
+O
+source/src/cond/ex/CondEx5.java,4/d/4dff27b5f367ba45b76fb7ed0424932ae49c5d07
+O
+source/src/cond/ex/CondEx6.java,3/c/3ca33d1fcf5cf642950b98164562a17fb5dbcd31
+O
+source/src/cond/ex/CondEx7.java,8/0/80c8b5fd9830f11bd2a44bc61acc4a49d11a19f2

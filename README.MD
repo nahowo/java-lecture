@@ -1,7 +1,13 @@
 # 목차
 - 2: [Hello world](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-2-hello-world)
 - 3: [변수](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-3-%EB%B3%80%EC%88%98)
-- 4: 연산자
+- 4: [연산자](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-4-%EC%97%B0%EC%82%B0%EC%9E%90)
+- 5: [조건문](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-5-%EC%A1%B0%EA%B1%B4%EB%AC%B8)
+- 6: [반복문](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-6-%EB%B0%98%EB%B3%B5%EB%AC%B8)
+- 7: [스코프, 형변환](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-7-%EC%8A%A4%EC%BD%94%ED%94%84-%ED%98%95%EB%B3%80%ED%99%98)
+- 8: [훈련](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-8-%ED%9B%88%EB%A0%A8)
+- 9: [배열](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-9-%EB%B0%B0%EC%97%B4)
+- 10: [메서드](https://github.com/nahowo/java-start?tab=readme-ov-file#%EC%84%B9%EC%85%98-10-%EB%A9%94%EC%84%9C%EB%93%9C)
 ---
 
 # 섹션 2: Hello World

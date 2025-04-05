@@ -1,14 +1,0 @@
-
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§±»ûÿÿÿÿJ$9ccaef76-cb49-49be-9064-e9afa25b1681
-t
-java:S1854"8Remove this useless assignment to local variable "sum4".(â®×úJ$985db70d-e612-4d3b-9d51-e7db6ddc500c
-t
-java:S1854
-"8Remove this useless assignment to local variable "sum3".(û²õƒJ$77a9e754-5545-4ba9-8d7b-4657f331e31a
-k	java:S106"+Replace this use of System.out by a logger.(ƒÂÎØúÿÿÿÿJ$e66858d9-7358-4900-8b41-c730c713c847
-f	java:S106"+Replace this use of System.out by a logger.(Ş”£J$2a8ae065-a3aa-48a6-b411-1bde143e446a
-e
-java:S1481
-")Remove this unused "sum3" local variable.(û²õƒJ$0e7c6f7e-bda6-42e8-a215-349a738f43c9
-e
-java:S1481")Remove this unused "sum4" local variable.(â®×úJ$59e096da-d4f7-4b1c-ae65-bf48791a7b38

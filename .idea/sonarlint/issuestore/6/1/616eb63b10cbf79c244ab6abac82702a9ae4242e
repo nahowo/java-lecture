@@ -1,7 +1,0 @@
-
-Y
-java:S4973"<Strings and Boxed types should be compared using "equals()".(’Ëú‹8—†ÌêØ2
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§±»ûÿÿÿÿ8™†ÌêØ2
-G	java:S106"+Replace this use of System.out by a logger.(’Ëú‹8©†ÌêØ2
-L	java:S106"+Replace this use of System.out by a logger.(â’â¨ùÿÿÿÿ8ª†ÌêØ2
-L	java:S106	"+Replace this use of System.out by a logger.(“Ÿ÷Ÿüÿÿÿÿ8«†ÌêØ2

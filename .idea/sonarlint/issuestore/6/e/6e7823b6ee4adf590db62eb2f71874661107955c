@@ -1,20 +1,0 @@
-
-€
-java:S1854"8Remove this useless assignment to local variable "name".(Ü°ŒŸÿÿÿÿÿ8ÕÍ½ıØ2J$4721a997-4d95-4c54-b299-15901e97c716
-r	java:S106"+Replace this use of System.out by a logger.(³Ãåñúÿÿÿÿ8ÚÍ½ıØ2J$d655a3a7-6db5-48b8-b871-328e26c78b50
-m	java:S106	"+Replace this use of System.out by a logger.(ò¢ã‰8ÚÍ½ıØ2J$8a1026a7-d15b-436e-bc33-97c68cb237e0
-r	java:S106
-"+Replace this use of System.out by a logger.(Ÿ™‰¢øÿÿÿÿ8ÚÍ½ıØ2J$4b3ea76c-788d-4541-a5f4-3b27695b3717
-m	java:S106"+Replace this use of System.out by a logger.(…¹ì»8ÛÍ½ıØ2J$9ff42c34-e54c-4bd0-928c-57c99dbb2509
-~
-java:S6880"6Replace the chain of if/else with a switch expression.(òŠçùÿÿÿÿ8É“¿ıØ2J$f6b03527-091e-4933-ab65-00f4abce4049
-r	java:S106"+Replace this use of System.out by a logger.(°£ÊÆşÿÿÿÿ8àÍ½ıØ2J$83abb071-eaff-4660-9d84-bfc95af5375c
-q
-java:S1481")Remove this unused "name" local variable.(Ü°ŒŸÿÿÿÿÿ8áÍ½ıØ2J$6abd56dd-16dc-49d9-967c-0a5635dd7d27
-m	java:S106"+Replace this use of System.out by a logger.(’Ÿ°…8áÍ½ıØ2J$d629171b-3835-4542-aa7d-6c80eb3f7a3f
-l	java:S106"+Replace this use of System.out by a logger.(Î¿í=8áÍ½ıØ2J$64f59887-fb25-4cb1-a079-89cd9c05d04d
-m	java:S106"+Replace this use of System.out by a logger.(Åœú”8âÍ½ıØ2J$0f0d6ab0-9eac-42c1-9e6d-6b844adf4036
-r	java:S106"+Replace this use of System.out by a logger.(ÆÇ‰œøÿÿÿÿ8âÍ½ıØ2J$4254d99a-13a7-4ded-af09-3179893e1bbd
-r	java:S106"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8âÍ½ıØ2J$93868267-2b2b-4648-858e-ee6329c901e2
-r	java:S106"+Replace this use of System.out by a logger.(Ùİ–±úÿÿÿÿ8Î“¿ıØ2J$88f3b410-0283-41c9-ba3d-c0191e4b0a61
-m	java:S106!"+Replace this use of System.out by a logger.(®‘§ó8±ÒÉıØ2J$e0c660c3-2028-42b4-b45e-c8bcd57e11a0

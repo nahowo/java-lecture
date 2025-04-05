@@ -1,10 +1,0 @@
-
-q
-java:S1192"ODefine a constant instead of duplicating this literal "ì›ì…ë‹ˆë‹¤. " 3 times.(·ÄçÀıÿÿÿÿ8¢¿¦‚Ù2
-ƒ
-java:S1854";Remove this useless assignment to local variable "balance".(ÃŒå¡ÿÿÿÿÿ8²¤¥‚Ù2J$390d6544-d219-4972-b695-24f1fa35fc63
-r	java:S106"+Replace this use of System.out by a logger.(úÆ³ğùÿÿÿÿ8‡¥¢‚Ù2J$7f8da6fe-ef20-498c-9d6f-bd6da9652bd3
-r	java:S106"+Replace this use of System.out by a logger.(·ÄçÀıÿÿÿÿ8‡¥¢‚Ù2J$acbb4139-c5cb-4279-818d-29bba947e854
-r	java:S106"+Replace this use of System.out by a logger.(ôÌùøÿÿÿÿ8ˆ¥¢‚Ù2J$5fe55181-792b-4998-8170-5cefeeb33455
-r	java:S106"+Replace this use of System.out by a logger.(ÒæŞÅüÿÿÿÿ8ˆ¥¢‚Ù2J$6c6c27e6-f454-4b38-ad8e-edaa3e592c2c
-r	java:S106"+Replace this use of System.out by a logger.(·ÄçÀıÿÿÿÿ8‰¥¢‚Ù2J$a572ff5e-b5ca-4043-9c31-41b4cf75f472

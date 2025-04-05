@@ -1,7 +1,0 @@
-
-I
-java:S1905	"'Remove this unnecessary cast to "long".(÷¥’ıÿÿÿÿ8ÕÂ€ûØ2
-r	java:S106
-"+Replace this use of System.out by a logger.(ë‚¬½úÿÿÿÿ8š©ôúØ2J$01c04615-b489-4b2b-9b3b-111fa0641015
-r	java:S106"+Replace this use of System.out by a logger.(­ğ»œüÿÿÿÿ8›©ôúØ2J$3649bd6d-38b9-4e49-a266-48f8d2197ef0
-m	java:S106"+Replace this use of System.out by a logger.(®ş”Ø8©ôúØ2J$4617d20e-91d1-4265-8244-88203461acd5

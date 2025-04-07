@@ -4,13 +4,13 @@
 - 4: [객체 지향 프로그래밍](https://github.com/nahowo/java-start/tree/main/source/src/java_basic#%EC%84%B9%EC%85%98-4-%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
 - 5: [생성자](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-5-%EC%83%9D%EC%84%B1%EC%9E%90)
 - 6: [패키지](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-6-%ED%8C%A8%ED%82%A4%EC%A7%80)
-- 7: [접근 제어자]()
-- 8: [자바 메모리 구조와 static]()
-- 9: [final]()
-- 10: [상속]()
-- 11: [다형성1]()
-- 12: [다형성2]()
-- 13: [다형성과 설계]()
+- 7: [접근 제어자](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-7-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90)
+- 8: [자바 메모리 구조와 static](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-8-%EC%9E%90%EB%B0%94-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B5%AC%EC%A1%B0%EC%99%80-static)
+- 9: [final](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-9-final)
+- 10: [상속](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-10-%EC%83%81%EC%86%8D)
+- 11: [다형성1](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-11-%EB%8B%A4%ED%98%95%EC%84%B11)
+- 12: [다형성2](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-12-%EB%8B%A4%ED%98%95%EC%84%B12)
+- 13: [다형성과 설계](https://github.com/nahowo/java-lecture/blob/main/source/src/java_basic/README.md#%EC%84%B9%EC%85%98-13-%EB%8B%A4%ED%98%95%EC%84%B1%EA%B3%BC-%EC%84%A4%EA%B3%84)
 
 # 섹션 2: 클래스와 데이터
 ### 클래스가 필요한 이유
@@ -209,12 +209,62 @@
    - 외부에서 사용하지 않고 내부에서만 사용하는 기능은 감춰야 한다. 
 
 # 섹션 8: 자바 메모리 구조와 static
+- 자바 메모리 구조는 크게 메서드 영역, 스택 영역, 힙 영역으로 나눌 수 있다. 
+### 메서드 영역
+- 클래스 정보(설계도)를 저장한다. 
+- 프로그램 실행 시 필요한 공통 데이터를 관리한다. 
+  - 클래스 정보: 클래스의 실행 코드(바이트 코드), 필드, 메서드, 생성자 등 모든 실행 코드
+  - static 영역: static 변수 보관
+  - 런타임 상수 풀: 프로그램 실행에 필요한 공통 리터럴 상수 보관, 프로그램을 효율적으로 관리하기 위한 상수 관리
+
+### 스택 영역
+- 실제 프로그램이 실행된다. 메서드를 실행할 때 스택이 하나씩 쌓인다. 
+- 자바 실행 시 각 스레드별로 하나의 실행 스택이 생성된다. 
+- 메서드 실행 시 하나의 스택 프레임이 생성되고 스택 영역에 적재된다. 
+- 각 스택 프레임은 지역 변수, 중간 연산 결과, 메서드 호출 정보 등을 포함한다.
+- 스택 프레임은 메서드가 종료될 때 제거된다. 스택 영역에서 스택 프레임이 모두 제거되면 프로그램을 종료한다. 
+
+### 힙 영역
+- 객체(인스턴스)와 배열을 저장한다. new 키워드를 사용해 힙 영역을 사용할 수 있다. 
+  - **메서드 코드는 같은 클래스의 인스턴스끼리는 전부 동일하기 때문에 메서드 영역에 저장된다.**
+  - 인스턴스를 생성하면 멤버 변수를 위한 메모리는 할당되지만 메서드에 대한 메모리 할당은 없다. 인스턴스의 메서드를 호출하면 메서드 영역에서 코드를 불러 사용한다. 
+- 가비지 컬렉션이 이루어지는 주요 영역이다. 더 이상 참조되지 않는 객체가 GC에 의해 제거된다. 
+  - 힙 영역 외부에서의 참조 없이 힙 영역 안에서만 인스턴스끼리 참조하는 경우에도 해당 객체에 접근할 방법이 없기 때문에 GC 대상이다. 
+
+## static 키워드
+- static 키워드는 주로 멤버 변수와 메서드에 사용된다. 
+- 인스턴스끼리 변수를 공유할 때 사용한다. 
+- 멤버 변수에 static 키워드를 적용하면 해당 변수에 접근할 때 `data.{변수명}`처럼 인스턴스명으로 접근할 수도 있고, `Data.{변수명}`처럼 클래스명으로 접근할 수도 있다. 
+  - 인스턴스 변수로 접근하면 해당 변수가 인스턴스 변수인지 클래스 변수인지 헷갈릴 수 있기 때문에 클래스 변수로 접근하는 것을 권장한다. 
+- 메서드도 static으로 설정하면 클래스 소속이 되어 인스턴스 생성 없이 메서드를 사용할 수 있다. 
+
+### 멤버 변수의 종류
+1. 인스턴스 변수: static이 붙지 않은 변수, 인스턴스에 소속
+2. 클래스 변수(정적 변수): static이 붙은 변수, 클래스에 소속, 자바 프로그램을 시작할 때 (변수별)하나만 생성된다. 
+- static 변수는 힙 영역이 아니라 메서드 영역에서 관리한다. 멤버 변수가 인스턴스마다 생성되는 것과 다르게 static 변수는 클래스마다 생성된다.
+
+### 변수와 생명주기
+- 지역 변수(매개변수 포함): 해당 스택 프레임과 함께 생성되고 제거된다. 
+- 클래스 변수: 인스턴스가 생성될 때 생성되고 힙 영역에서 인스턴스가 GC에 의해 제거되기 전까지 생존한다.
+- 클래스 변수: JVM이 시작될 때 생성되고 JVM이 종료될 때까지 생존한다. 
+
+### 정적 메서드
+- static 메서드 내부에서는 static 메서드나 static 변수만 사용할 수 있다.
+  - 자바 프로그램 실행 시 static이 아닌 변수/메서드는 아직 생성되지 않았기 때문에 그 때 만들어지는 static 메서드에도 non-static 요소가 포함될 수 없다. 
+- static 메서드는 모든 곳에서 호출이 가능하다. 
+- static 메서드도 인스턴스를 통한 접근이 가능하지만 가독성 측면에서 권장하지 않는다. 
+
+### static import
+- 정적 변수/메서드 자체를 import static으로 지정하면 클래스명을 생략하고 static 변수/메서드를 사용할 수 있다.
+
+### main method
+- main() 메서드는 static 메서드이기 때문에 객체 생성 없이 실행이 가능하다. 또 main()이 static이기 때문에 static 메서드만 호출할 수 있다. 
+- 생성자의 접근 제어자를 private으로 막으면 객체 생성 없이 static 요소를 사용하도록 할 수 있다. 
+
+# 섹션 9: final
 
 
-# 셕센 9: final
-
-
-# 셕센 10: 상속
-# 셕센 11: 다형성1
-# 셕센 12: 다형성2
-# 셕센 13: 다형성과 설계
+# 섹션 10: 상속
+# 섹션 11: 다형성1
+# 섹션 12: 다형성2
+# 섹션 13: 다형성과 설계

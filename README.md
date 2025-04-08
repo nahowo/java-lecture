@@ -5,3 +5,6 @@
 
 ### 자바 기본편
 - [학습 문서](https://github.com/nahowo/java-start/blob/main/source/src/java_basic/README.md)
+
+### 자바 중급 1편
+- [학습 문서](https://github.com/nahowo/java-lecture/blob/main/source/src/java_mid1/README.md)

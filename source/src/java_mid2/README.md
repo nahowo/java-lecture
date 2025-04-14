@@ -294,3 +294,58 @@
 - Stack의 경우 Deque보다 느리기 때문에 Deque를 사용한다. 
 
 # 섹션 11: 컬렉션 프레임워크 - 순회, 정렬
+## 순회 - Iterator, Iterable
+- 자료구조별 데이터 접근 방식이 다르기 때문에 순회 방식도 다르다. 
+- 자바는 이 문제를 해결하기 위해 Iterable과 Iterator 인터페이스를 제공한다. 
+
+### Iterable
+- 반복 가능하다는 뜻이다. 
+- 주요 메서드
+  - `iterator()`: `Iterator` 반복자를 반환한다. 
+- Iterable 인터페이스를 구현하면 반복할 수 있는 클래스가 된다. 
+- Iterable 인터페이스를 구현하면 iterator() 메서드를 구현해야 한다. 여기서 Iterator 인터페이스를 구현한 반복자를 반환한다. 
+
+### Iterator
+- 반복자라는 뜻이다. 
+- 주요 메서드
+  - `hasNext()`: 다음 요소가 있는지 확인한다. 
+  - `next()`: 다음 요소를 반환한다. 내부 위치를 다음 위치로 이동한다. 
+
+### 향상된 for문
+- 향상된 for문을 사용하려면 Iterable을 구현해야 한다. 
+
+## 자바가 제공하는 Iterable, Iterator
+- 자바 컬렉션 프레임워크는 Iterable 인터페이스를 제공하고, 리스트, 세트 등 각 구현체에 맞는 Iterator을 구현해두었다.
+
+## 정렬 - Comparable, Comparator
+- 자바는 데이터가 작을 때(32개 이하) 듀얼 피벗 퀵소트(Dual Pivot Quick Sort)를 사용하고, 데이터가 많다면 팀소트(Tim sort)를 사용한다. 
+- 사용자 객체를 정렬하기 위해 Comparable 인터페이스를 구현해서 두 객체 중 어떤 것이 크다고 간주할지 정의할 수 있다. 
+- 객체의 기본 정렬 방법은 객체에 Comparable을 구현해서 정의한다. 이러면 객체는 비교할 수 있는 객체가 되고, 기본 정렬 방법을 가지게 된다. 
+- 기본 정렬 외에 다른 정렬 방법을 사용해야 하는 경우 비교자(Comparator)를 별도로 구현해 정렬 메서드에 전달한다.
+- 자바가 제공하는 Integer, String 같은 기본 객체들은 대부분 Comparable을 구현해 두었다. 
+
+### Arrays.sort()
+- 기본 정렬은 `Arrays.sort(배열)`처럼 인자로 정렬하려는 배열을 넘겨주면 된다. 
+- 정렬 방식을 `지정하고 싶다면 Arrays.sort(배열, 비교자)`처럼 인자로 정렬하려는 배열과 비교자(Comparator)를 넘겨주면 된다. 비교자는 Comparator를 구현해야 한다. 
+
+### List 정렬
+- 기본 정렬자의 경우 `list.sort(null)`처럼 인자로 null을 넘겨서 사용한다. 다른 정렬자를 사용할 경우 비교자를 인자로 넘겨서 사용한다. 
+
+### Tree 정렬
+- Tree는 원소가 들어올 때부터 정렬 상태를 유지하기 때문에 정렬 방식을 생성할 때 전달해야 한다. 
+  ```java
+  TreeSet<MyUser> treeSet1 = new TreeSet<>(new IdComparator());
+  ```
+
+## 컬렉션 Utils
+### 가변 컬렉션 <-> 불변 컬렉션
+- `List.of(원소 1, 원소 2, ...)`같은 식으로 생성하면 **불변 컬렉션**을 생성할 수 있다. 
+- `List<Integer> 가변 리스트 = new ArrayList<>(불변 리스트)`를 하면 불변 리스트를 가변 리스트로 변경할 수 있다.
+- `List<Integer> 불변 리스트 = Collections.unmodifiableList(가변 리스트)`를 하면 다시 가변 리스트를 불변 리스트로 변경할 수 있다.
+
+## 실무 선택 가이드
+- List의 경우 대부분 ArrayList
+  - 데이터가 매우 크고 앞쪽에서 연산이 많이 일어나는 경우 LinkedList
+- Set의 경우 대부분 HashSet
+- Map의 경우 대부분 HashMap
+- Queue의 경우 대부분 ArrayDeque

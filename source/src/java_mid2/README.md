@@ -246,7 +246,51 @@
 - 레드-블랙 트리를 내부에서 사용한다. 
   - 노드의 왼쪽 자손은 현재값보다 작은 값, 오른쪽 자식은 현재값보다 큰 값을 가진다. 
 - 요소가 정렬된 순서로 저장된다. 
-
+- 시간복잡도가 O(logN)이다. 
 
 # 섹션 10: 컬렉션 프레임워크 - Map, Stack, Queue
+## Map
+- Key, Value로 이루어져 있다.
+- Key는 중복을 허용하지 않고 Value는 중복을 허용한다. 
+- 순서를 보장하지 않는다. 
+- Map 인터페이스에는 HashMap, LinkedMap, TreeMap 등 다양한 구현체를 제공한다. 
+- Set과 동일하게 사용자 생성 객체를 key값으로 사용할 경우 무조건 equals(), hashCode()를 구현해야 한다. 
+
+### Map 구현체
+- Map은 key가 있는 Set과 동일하므로 구현체도 비슷하게 구성된다. 
+
+### HashMap
+- HashSet은 HashMap의 구현을 사용하며 Value만 비워두고 사용한다. 
+
+### LinkedMap
+- HashMap과 유사하지만 연결 리스트를 사용해 삽입 순서/최근 접근 순서에 따라 요소를 유지한다. 
+
+### TreeMap
+- 레드-블랙 트리 기반의 자료구조를 가진다. 
+- 키가 정렬된 순서로 저장된다. 
+- 주요 작업들의 시간복잡도는 O(logN)이다. 
+
+## Stack
+- Stack은 후입선출 구조를 가지는 자료구조이다. 
+- push/pop
+- 자바에서 스택을 사용하려면 Stack 클래스 대신 Deque 클래스를 사용하는 것이 좋다. 
+
+## Queue
+- Queue는 선입선출 구조를 가지는 자료구조이다. 
+- offer/poll/peek
+
+## Deque
+- Double-End Queue의 약자이다. 
+- 양쪽 끝에서 선입선출이 가능한 자료구조이다. 큐와 스택의 기능을 다 가지고 있다. 
+- offerFirst/offerLast/pollFirst/pollLast/peekFirst/peekLast
+
+### ArrayDeque vs LinkedDeque
+- ArrayList와 LinkedList의 차이와 비슷하다. 
+- ArrayList는 원형 큐 자료구조를 사용해 앞/뒤 입력에 O(1)이 소요된다. 
+- 일반적으로 ArrayList가 실제 사용 환경에서 더 나은 성능을 보인다. 
+
+## Deque, Stack, Queue
+- Deque는 Stack, Queue의 메서드까지 제공한다. 
+- Stack의 경우 Deque보다 느리기 때문에 Deque를 사용한다. 
+
 # 섹션 11: 컬렉션 프레임워크 - 순회, 정렬

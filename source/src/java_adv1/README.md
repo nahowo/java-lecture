@@ -193,6 +193,21 @@
 - 이 때 대기하는 스레드의 상태는 Waiting이 아니라 Timed Waiting이 된다. 
 
 # 섹션 5: 스레드 제어와 생명 주기 2
+## 인터럽트
+- 대기 상태의 스레드를 직접 깨워서 작동하는 Runnable 상태로 만들 수 있다. 
+1. `스레드.interrupt()` 메서드를 호출하면 해당 스레드가 인터럽트 상태가 된다. 
+2. 인터럽트 상태인 스레드가 InterruptException를 던지는 메서드와 만나면 InterruptException이 발생한다. 
+3. InterruptException이 발생하면 스레드가 다시 Runnable 상태가 된다.
+- 스레드가 인터럽트 상태인지 확인하기 위해서는 `스레드.isInterrupted()`를 사용한다. 
+- 스레드가 인터럽트 상태인지 확인하고 인터럽트 상태라면 Runnable로 변경하기 위해서는 `스레드.interrupted()`를 사용한다. 
+
+## yield
+- yield는 양보하다/넘겨주다의 사전적 의미를 가진다. 
+- `Thread.yield()` 메서드는 현재 실행중인 스레드가 자발적으로 CPU를 양보해 다른 스레드가 실행될 수 있도록 한다. 
+- **`yield()` 메서드를 호출한 스레드는 Runnable 상태를 유지하면서 CPU를 양보한다. 즉 sleep()과 다르게(Waiting) 다시 스케줄링 큐에 들어가면서 CPU 사용 기회를 넘긴다.**
+- `sleep()`: Running -> Waiting
+- `yield()`: Running -> Runnable
+
 # 섹션 6: 메모리 가시성
 # 섹션 7: 동기화 - synchronized
 # 섹션 8: 고급 동기화 - concurrent.Lock

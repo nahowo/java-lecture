@@ -264,7 +264,55 @@
 - 따라서 synchronized는 꼭 필요한 곳으로 한정해 설정해야 한다. 즉 synchronized 메서드로 모든 메서드를 임계 영역으로 사용하는 것보다 메서드의 정말 필요한 부분만 임계 영역으로 설정하는 것이 좋다. 
 - synchronized(this) {} 의 코드 블럭 안에 코드를 작성하여 임계 영역을 설정할 수 있다.
 
+### synchronized 장단점
+- 장점
+  - 자동 잠금 해제: synchronized 메서드/블럭 완료 시 자동으로 락 대기중인 다른 스레드의 잠금이 해제된다. 
+- 단점
+  - 무한 대기: BLOCKED 상태 스레드는 락이 풀릴 때까지 무한 대기한다. 
+  - 공정성: 락이 돌아왔을 때 BLOCKED 상태의 스레드들 중 어떤 스레드가 락을 획득할 지 알 수 없다(스케줄링의 starvation). 
+
 # 섹션 8: 고급 동기화 - concurrent.Lock
+## LockSupport
+- synchronized의 단점을 해결하기 위해 더 유연하고 세밀한 방법이 필요하다. 
+- **LockSupport 라이브러리**를 이용해 해결할 수 있다. 
+- LockSupport 기능 
+  - park(): 스레드를 WAITING 상태로 변경한다.
+  - parkNanos(나노초): 스레드를 나노초 동안만 TIMED_WAITING 상태로 변경한다. 
+  - unpark(스레드): 지정한 WAITING 상태의 스레드를 RUNNABLE 상태로 변경한다. 
+    - 대기 중인 스레드는 스스로 깨어날 수 없기 때문에 외부 스레드에서 지정해 깨워야 한다. 
+
+### BLOCKED vs WAITING(TIMED_WAITING)
+- 인터럽트 관점
+  - BLOCKED 상태는 인터럽트가 걸려도 대기 상태를 빠져나오지 못한다. 
+  - WAITING 상태는 인터럽트가 걸리면 대기 상태를 빠져나와 RUNNABLE 상태가 된다. 
+- 용도
+  - BLOCKED는 자바의 synchronized에서 락을 획득하기 위해 대기할 때 사용된다. 
+  - WAITING은 다양한 대기 상태 메서드 호출 시 사용된다. join(), park(), wait()등의 메서드 호출 시 WAITING 상태가 된다. 
+- WAITING과 TIMED_WAITING은 서로 짝이 있다. 
+- BLOCKED, WAITING, TIMED_WAITING 모두 스레드가 대기하며 실행 스케줄링에 들어가지 않는다. 
+- LockSupport는 BLOCKED 상태가 무한 대기한다는 단점을 보완하기 위해 인터럽트로 빠져나올 수 있고, parkNanos()를 도입해 TIMED_WAITING 상태가 되어 스스로 깨어날 수 있게 했다. 
+- 하지만 LockSupport가 제공하는 기능은 너무 저수준이다. park(), unPark()등 개발자가 직접 구현해야 한다. 
+
+## ReentrantLock
+- 자바는 위 문제를 해결하기 위해 Lock 인터페이스와 ReentrantLock 구현체를 제공한다.
+- 메서드
+  - lock(): 락을 획득하는 메서드이다. 여기서의 lock은 객체 내부의 모니터 락이 아니다(모니터 락은 synchronized에서만 사용된다). 다른 스레드가 락을 획득했다면 현재 스레드는 WAITING 상태가 된다. 이 메서드는 인터럽트에 반응하지 않는다. 
+  - lockInterruptibly(): lock 메서드와 동일하지만 대기 중에 인터럽트가 발생하면 InterruptedException이 발생하며 락 획득을 포기한다. 
+  - tryLock(): 락 획득을 시도하고 즉시 성공 여부를 반환한다. 즉 현재 락을 얻을 수 없다면 즉시 포기한다.
+  - tryLock(time, unit): tryLock()과 같지만 주어진 시간 동안 대기한다. 인터럽트 발생 시 반응한다. 
+  - unlock(): 락을 해제한다. 락 획득을 대기 중인 다른 스레드 중 하나가 락을 획득하게 된다. 락을 획득한 스레드가 호출해야 하고 아니라면 IllegalMonitorStateException이 발생할 수 있다. 
+  - newCondition(): 스레드가 특정 조건을 기다리거나 신호를 받을 수 있게 한다. 
+- 위의 메서드를 통해 LockSupport보다 유연하고 고수준의 기능을 사용할 수 있다. 
+- ReentrantLock 구현체는 공정 모드와 비공정 모드를 제공한다. 
+- 비공정 모드(Non-fair Mode): 기본 모드, 락을 먼저 요청한 스레드가 락을 먼저 획득한다는 보장이 없다.
+  - 성능 우선: 락 획득 속도가 빠름
+  - 선점 가능: 기존 대기 스레드보다 먼저 락을 획득할 수 있음
+  - 기아 현상: 특정 스레드가 계속해서 락을 획득하지 못할 수 있음
+- 공정 모드(Fair Mode): 락을 먼저 요청한 스레드가 락을 먼저 획득한다고 보장한다. 
+  - 공정성 보장: 대기 큐에서 먼저 대기한 스레드가 먼저 락 획득
+  - 기아 현상 방지: 모든 스레드가 언젠가는 락 획득 가능
+  - 성능 저하: 락 획득 속도가 느려질 수 있음
+
 # 섹션 9: 생산자 소비자 문제 1
 # 섹션 10: 생산자 소비자 문제 2
 # 섹션 11: CAS - 동기화와 원자적 연산

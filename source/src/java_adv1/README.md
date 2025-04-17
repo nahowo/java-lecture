@@ -382,9 +382,71 @@ private final Condition condition = lock.newCondition();
 - 데이터 획득 차단: 큐가 비어 있으면 데이터 획득 작업을 시도하는 스레드는 큐에 데이터가 들어올 때까지 차단된다. 
 - 대표적인 구현체로 ArrayBlockingQueue(배열 기반, 버퍼 크기 고정), LinkedBlockingQueue(링크 기반, 버퍼 크기 고정/무한)가 있다. 
 
-### BlockingQueue 기능
-
 # 섹션 11: CAS - 동기화와 원자적 연산
+## 원자적 연산
+- 원자적 연산(atomic operation): 더 이상 나눌 수 없는 단위로 수행되는 연산을 의미한다.
+- i = 1은 원자적 연산이다. i += 1(i ++)은 원자적 연산이 아니다. 
+- 원자적 연산이 아닌 연산은 멀티스레드 상황에서 문제가 생길 수 있다.
+### Volatile
+- 연산에서 사용하는 변수에 Volatile을 적용해도 문제는 해결되지 않는다. Volatile은 캐시 메모리 대신 메인 메모리를 직접 사용하도록 하는 것이지 연산 자체를 묶어주지 않는다. 
+
+### synchronized
+- synchronized를 통해 안전한 임계 영역을 만들 수 있다. 원자적 연산을 멀티스레드 상황에서 안전하게 사용할 수 있다. 
+
+## AtomicInteger
+- 멀티스레드 상황에서 안전한 값 증가/감소 연산을 제공한다. AtomicLong, AtomicBoolean 등 다양한 클래스가 존재한다. 
+### synchronized vs AtomicInteger 성능 비교
+- AtomicInteger가 락을 사용하는 synchronized, reentrantLock보다 빠르다. 
+- AtomicInteger은 임계 영역을 만들지 않고(락을 사용하지 않고), 원자적 연산을 만들어낸다. 
+
+## CAS 연산
+- CAS(Compare-And-Swap): 락을 사용하지 않는 락 프리 기법이다. 락을 완전히 대체할 수는 없고 작은 단위의 일부 영역에 적용할 수 있다. 
+- compareAndSet(a, b): 현재 값이 a면 b로 변경한다. 이 연산은 원자적 연산이다. 
+  1. 메인 메모리에 있는 값을 확인한다.  
+  2. 해당 값이 a라면 b로 변경한다. 
+- CPU 하드웨어의 지원: 소프트웨어가 아니라 하드웨어가 원자적이지 않은 연산을 특별하게 하나의 원자적인 연산으로 묶어서 제공한다. 대부분의 현대 CPU는 CAS 연산을 위한 명령어를 제공한다. 
+  - CPU가 1, 2번 연산 사이에 다른 스레드가 해당 값에 접근하지 못하도록 막는다. 이 연산 사이는 굉장히 작기 때문에 성능에 크게 영향을 미치지 않는다. 
+```java
+    private static int incrementAnsGet(AtomicInteger atomicInteger) {
+        int getValue;
+        boolean result;
+        do {
+            getValue = atomicInteger.get();
+            log("getValue: " + getValue);
+            result = atomicInteger.compareAndSet(getValue, getValue + 1);
+            log("result: " + result);
+        } while (!result);
+        return getValue + 1;
+    }
+```
+- 기존 값 + 1 연산을 무조건 원자적으로 수행할 때까지 while문을 돈다. 
+- getValue = atomicInteger.get(); 줄에서 확인한 값이 atomicInteger.compareAndSet(getValue, getValue + 1); 를 통해 중간에 변경되지 않았다는 것이 검증되면 기존 값 + 1을 반환한다. 
+- 이때 반환 시 get()으로 반환하면 중간에 다른 스레드에서 값을 변경할 수 있기 때문에 무조건 기존값 + 1을 반환해야 한다. **즉 compareAndSet은 값이 변경되었는지 아닌지 여부를 확인하는 데만 사용되고 실제 값은 기존값 + 1이 되어야 한다.**  
+- 스레드 충돌이 발생할 때마다 CAS를 다시 실행하므로 락 없이 데이터를 안전하게 변경할 수 있다. 
+- 충돌이 드물게 발생하는 환경에서 높은 성능을 보인다. 스레드 대기 시간과 오버헤드가 줄어든다. 간단한 연산의 경우 CPU 연산에서는 충돌이 자주 발생하지 않는다. 
+- 충돌이 빈번하게 발생하는 환경에서는 CPU 자원을 많이 소모하게 된다. 
+
+### CAS vs 락 방식
+- 락
+  - 비관적 접근(충돌이 일어날 것이라고 가정)
+  - 데이터에 접근하기 전에 항상 락을 획득
+  - 다른 스레드의 접근을 막음
+- CAS
+  - 낙관적 접근(충돌이 일어나지 않을 것이라고 가정)
+  - 데이터에 바로 접근
+  - 충돌이 발생하면 그때 재시도
+- 간단한 연산에서는 충돌이 자주 발생하지 않기 때문에 CAS를 사용하는 것이 효과적이다. (충돌 발생 횟수 < 충돌이 발생하지 않는 횟수)
+
+## CAS를 활용한 락(Spin Lock)
+- 락이 해제되기를 기다리며 반복 확인하는 모습 때문에 스핀 락이라는 이름이 붙었다. 바쁜 대기(busy wait)이라고도 한다. 
+- 락 획득 시 아래의 연산을 원자적으로 만들어야 한다. 
+  1. 락 사용 여부 확인
+  2. 락의 값 변경
+- 이를 위해 AtomicBoolean을 사용한다. atomicBoolean.compareAndSet(false, true)를 통해 락이 false인지 확인하고 false라면 현재 스레드가 락을 가지도록 true로 만드는 과정을 원자적으로 수행한다. 
+
+### CAS 단점
+- 오래 걸리는 로직에서 스핀 락을 사용하면 CPU 사용률이 증가한다. 동기화 락을 사용하는 방식보다 스핀 락을 사용하는 방식이 더 효율적인 경우에 사용해야 한다.  
+
 # 섹션 12: 동시성 컬렉션
 # 섹션 13: 스레드 풀과 Executor 프레임워크 1
 # 섹션 14: 스레드 풀과 Executor 프레임워크 2

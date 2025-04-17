@@ -340,6 +340,50 @@
 - **깨어난 스레드는 임계 영역의 코드 중 wait()을 호출한 부분부터 실행된다. 이때 락을 획득하면 wait() 이후 코드를 실행한다.**
 
 # 섹션 10: 생산자 소비자 문제 2
+## Condition
+```java
+private final Lock lock = new ReentrantLock();
+private final Condition condition = lock.newCondition();
+```
+- 위처럼 사용할 수 있다. 
+- Condition.await()
+  - 지정한 condition에 현재 스레드를 WAITING 상태로 보관한다. ReentrantLock에서 획득한 락(모니터 락과 다름)을 반납하고 대기 상태로 condition에 보관된다. 
+- Condition.signal()
+  - 지정한 condition에서 대기중인 스레드를 하나 깨운다. 깨어난 스레드는 condition에서 빠져나온다. 
+- Condition을 분리하면 대기 공간을 여러개로 만들어 현재 스레드를 특정 대기 공간에 보관하고, 특정 대기 공간에서 대기중인 스레드들만 깨울 수 있다.
+
+### Object.notify() vs Condition.signal()
+- **Object.notify()**
+  - 대기 집합의 스레드 중 하나를 선택해 깨운다. 깨우는 순서는 정의되지 않으며 JVM 구현에 따라 다르다. 
+  - synchronized 블록 내에 모니터 락을 가지고 있는 스레드가 호출해야 한다. 
+- **Condition.signal()**
+  - 대기 중인 스레드 중 하나를 깨우며, 일반적으로 FIFO 순을 따른다. 자바 버전과 구현에 따라 달라질 수 있지만 보통 queue 구조를 사용한다. 
+  - ReentrantLock을 가지고 있는 스레드가 호출해야 한다. 
+
+## 스레드의 대기
+### synchronized 대기
+- 대기 1: 락 획득 대기
+  - BLOCKED 상태
+  - synchronized 진입 시 모니터 락이 없으면 시작됨
+  - 다른 스레드가 synchronized를 빠져나갈 때 대기가 풀리며 락 획득 시도
+- 대기 2: wait() 대기
+  - WAITING 상태
+  - wait() 호출 시 스레드 대기 집합에서 대기
+  - 다른 스레드가 notify() 호출 시 대기 집합에서 벗어나 대기 1 상태가 됨
+- 자바 내부적으로 락을 기다리는 BLOCKED 상태의 스레드들을 관리한다(대기 2의 대기 집합처럼 락 대기 집합들이 존재). 
+- 자바의 모든 객체 인스턴스는 멀티스레드와 임계 영역을 다루기 위해 내부에 3가지 기본 요소를 가진다.
+  1. 모니터 락
+  2. 락 대기 집합(모니터 락 대기 집합)
+  3. 스레드 대기 집합
+- 락 대기 집합이 1차 대기소이고, 스레드 대기 집합이 2차 대기소이다. 2차 대기소에 들어간 스레드는 2차, 1차 대기소를 모두 빠져나와야 임계 영역을 수행할 수 있다. 
+
+## BlockingQueue 인터페이스
+- 데이터 추가 차단: 큐가 가득 차면 데이터 추가 작업을 시도하는 스레드는 공간이 생길 때까지 차단된다. 
+- 데이터 획득 차단: 큐가 비어 있으면 데이터 획득 작업을 시도하는 스레드는 큐에 데이터가 들어올 때까지 차단된다. 
+- 대표적인 구현체로 ArrayBlockingQueue(배열 기반, 버퍼 크기 고정), LinkedBlockingQueue(링크 기반, 버퍼 크기 고정/무한)가 있다. 
+
+### BlockingQueue 기능
+
 # 섹션 11: CAS - 동기화와 원자적 연산
 # 섹션 12: 동시성 컬렉션
 # 섹션 13: 스레드 풀과 Executor 프레임워크 1

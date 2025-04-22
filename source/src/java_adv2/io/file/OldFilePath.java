@@ -1,0 +1,19 @@
+package java_adv2.io.file;
+
+import java.io.File;
+import java.io.IOException;
+
+public class OldFilePath {
+    public static void main(String[] args) throws IOException {
+        File file = new File("source/temp/..");
+        System.out.println("path: " + file.getPath());
+
+        System.out.println("Absolute path: " + file.getAbsolutePath());
+        System.out.println("Cononical path: " + file.getCanonicalPath());
+
+        File[] files = file.listFiles();
+        for (File f : files) {
+            System.out.println((f.isFile() ? "F | " : "D | ") + f.getName());
+        }
+    }
+}

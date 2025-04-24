@@ -1,5 +1,12 @@
-package java_adv2.network.test;
+package java_adv2.chat.server;
 
+
+import java_adv2.chat.client.Client;
+import java_adv2.chat.client.ReadHandler;
+import java_adv2.chat.client.WriterHandler;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -8,10 +15,9 @@ import static java_adv1.util.MyLogger.log;
 
 public class Server {
     private static final int PORT = 8080;
-
     public static void main(String[] args) throws IOException {
-        SessionManager sessionManager = new SessionManager();
         ServerSocket serverSocket = new ServerSocket(PORT);
+        SessionManager sessionManager = new SessionManager();
 
         ShutdownHook shutdownHook = new ShutdownHook(serverSocket, sessionManager);
         Runtime.getRuntime().addShutdownHook(new Thread(shutdownHook, "shutdown"));
@@ -19,12 +25,10 @@ public class Server {
         try {
             while (true) {
                 Socket socket = serverSocket.accept();
-                System.out.println("socket: " + socket);
+                log("socket: " + socket);
                 Session session = new Session(socket, sessionManager);
-                Thread readThread = new Thread(session.readHandler);
-                Thread writerThread = new Thread(session.writerHandler);
-                readThread.start();
-                writerThread.start();
+                Thread sessionThread = new Thread(session);
+                sessionThread.start();
             }
         } catch (IOException e) {
             log("서버 소켓 종료: " + e);

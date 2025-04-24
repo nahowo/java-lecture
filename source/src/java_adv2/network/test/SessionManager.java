@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SessionManager {
-    private List<Session> sessions = new ArrayList<>();
+    private final List<Session> sessions;
+
+    public SessionManager() {
+        this.sessions = new ArrayList<>();
+    }
 
     public synchronized void add(Session session) throws IOException {
         sessions.add(session);
@@ -23,11 +27,8 @@ public class SessionManager {
         sessions.clear();
     }
 
-    public synchronized void printAll(Session session) throws IOException {
+    public synchronized void printAll() throws IOException {
 
-        for (Session s : sessions) {
-            session.send(s.getName());
-        }
     }
 
     public synchronized void send(String message) throws IOException {

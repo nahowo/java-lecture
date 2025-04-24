@@ -14,34 +14,23 @@ public class Client {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String write;
-        String received;
 
         try (Socket socket = new Socket("localhost", PORT);
-             DataInputStream input = new DataInputStream(socket.getInputStream());
-             DataOutputStream output = new DataOutputStream(socket.getOutputStream())) {
-
-            System.out.print("이름: ");
-            write = scanner.nextLine();
-            output.writeUTF(write);
-            received = input.readUTF();
-            System.out.println(received);
-
+            DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+            DataInputStream input = new DataInputStream(socket.getInputStream())) {
+            Thread.sleep(1000);
+            System.out.println("[채팅방에 입장했습니다. ]");
             while (true) {
-                System.out.print("명령어: ");
                 String toSend = scanner.nextLine();
+                // session에 메시지 전달
                 output.writeUTF(toSend);
-                try {
-                    while (true) {
-                        received = input.readUTF();
-                        System.out.println(received);
-                    }
-                } catch (EOFException e) {
-                    break;
-                }
+                // 메시지 받아오기
+//                log("client: " + input.readUTF());
             }
         } catch (IOException e) {
             log(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

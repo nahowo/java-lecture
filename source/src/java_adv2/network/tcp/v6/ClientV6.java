@@ -16,8 +16,8 @@ public class ClientV6 {
         log("클라이언트 시작");
 
         try (Socket socket = new Socket("localhost", PORT);
-             DataInputStream input = new DataInputStream(socket.getInputStream());
-             DataOutputStream output = new DataOutputStream(socket.getOutputStream())) {
+            DataInputStream input = new DataInputStream(socket.getInputStream());
+            DataOutputStream output = new DataOutputStream(socket.getOutputStream())) {
             log("소켓 연결: " + socket);
 
             while (true) {

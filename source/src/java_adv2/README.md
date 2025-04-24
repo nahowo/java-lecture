@@ -211,6 +211,54 @@
 - 주로 전달된 데이터로 신규 리소스 등록, 프로세스 처리에 사용
 
 # 섹션 12: HTTP 서버 만들기
+- PrintWriter
+  - autoflush를 true로 설정하면 println시 매번 네트워크 전송을 보낸다. false로 설정하면 직접 .flush() 메서드를 호출해야 전송을 보내기 때문에 마지막에는 꼭 flush를 해 줘야 한다. 
+- 크롬은 새 창을 키고 입력창에 링크를 (오타 없이) 요청하면 엔터를 치지 않아도 미리 요청을 보내도록 한다. 
+### 멀티스레드 환경으로 변경하기
+- 채팅 프로그램과 비슷하게 요청을 받으면 새 스레드를 생성하도록 해서 멀티스레드를 허용하도록 수정한다. 
+- 기존처럼 Thread를 직접 사용하지 않고 ExecutorService의 스레드 풀을 사용하자. 
+### 기능 추가
+### URL 인코딩
+- HTTP 메시지에서 URL을 포함한 시작 라인과 HTTP 헤더의 이름은 항상 ASCII를 사용해야 한다. 
+- 순수한 UTF-8로 URL을 표현하려면 모든 네트워크 장비, 서버, 클라이언트 소프트웨어가 이를 지원해야 하는데, 여전히 많은 시스템에서 ASCII 기반 표준에 의존하고 있어 호환성 문제가 발생할 수 있다. 
+- HTTP 스펙은 매우 보수적이며 호환성을 가장 우선시한다. 
+- 퍼센트 인코딩
+  - 한글을 UTF-8 인코딩으로 표현하면 한 글자에 3byte 데이터를 사용한다. 각 한글을 UTF-8 인코딩의 16진수로 나타내고 각 바이트 앞에 %문자를 붙인 것이 퍼센트 인코딩이다. 
+- 디코딩 과정
+  - 클라이언트가 퍼센트 인코딩으로 변환
+  - 클라이언트 -> 서버 전송
+  - 서버가 ASCII 문자 전달받음
+  - 서버는 %가 붙은 경우 디코딩해야 하는 문자로 인식, 디코딩
+- HTTP 바디에서는 UTF-8과 같은 방식을 사용할 수 있다. 
+## 커맨드 패턴 도입, HTTP Servlet
+- Servlet: HTTP Server Applet의 줄임말이다. 
+- HttpServlet 인터페이스의 service() 메서드에 개발 관련 부분을 구현한다. 
+- HTTP 서버와 관련된 부분, 서비스 개발을 위한 로직을 분리한다. 
+- HTTP 서버
+  - HTTP Server
+  - HTTP Request, Response
+  - ServletManager
+  - HTTP Servlet 인터페이스, 공통 HTTP Servlet 구현체
+- 서비스 로직
+  - 비즈니스 로직 Servlet
+  - Server Main: 어떤 상황에서 어떤 servlet을 사용할지 의사결정
+
+## 웹 애플리케이션 서버의 역사
+- WAS(Web Application Server): 웹 서버의 역할을 하면서 추가로 애플리케이션(프로그램 코드)도 수행할 수 있는 서버; 웹 기반으로 작동하지만 이 서버를 통해 프로그램 코드(서블릿 구현체)도 실행 가능한 서버
+- 호환성 문제를 해결하기 위해 자바 진영에서는 1990년대 서블릿이라는 표준이 등장했다. 
+- 서블릿은 Servlet, HttpServlet, ServletRequest, ServletResponse를 포함한 표준을 제공한다. 처음에는 javax.servlet 패키지였다가 이후에 jakarta.servlet으로 변경되었다. 
+- 서블릿을 제공하는 주요 자바 WAS
+  - 오픈소스
+    - Apache Tomcat
+    - Jetty
+    - ClassFish
+    - Undertow
+  - 상용
+    - IBM WebSphere
+    - Oracle WebLogic
+- 서블릿 기능을 포함하지 않아도 프로그램 코드를 수행할 수 있다면 WAS라고 볼 수 있다. 
+- jakarta.servlet.Servlet 인터페이스를 구현하면 tomcat 같은 애플리케이션 서버에서 작성한 Servlet 구현체를 실행할 수 있다. 이후에 다른 WAS로 변경해도 동일한 표준 서블릿을 구현하기 때문에 코드 변경이 필요하지 않다. 
+
 # 섹션 13: 리플렉션
 # 섹션 14: 애노테이션
 # 섹션 15: HTTP 서버 활용

@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.*;
+import static java_adv1.util.MyLogger.log;
 
 public class HttpRequest {
     private String method;
@@ -15,9 +16,12 @@ public class HttpRequest {
     private final Map<String, String> queryParameter = new HashMap<>();
     private final Map<String, String> headers = new HashMap<>();
 
+
     public HttpRequest(BufferedReader reader) throws IOException {
         parseRequestLine(reader);
         parseHeader(reader);
+        parseBody(reader);
+        log(queryParameter);
     }
 
     private void parseRequestLine(BufferedReader reader) throws IOException {
@@ -29,7 +33,7 @@ public class HttpRequest {
         if (parts.length != 3) {
             throw new IOException("Invalid request line: " + requestLine);
         }
-
+        System.out.println(requestLine);
         method = parts[0];
         String[] pathParts = parts[1].split("\\?");
         path = pathParts[0];
@@ -50,9 +54,30 @@ public class HttpRequest {
 
     private void parseHeader(BufferedReader reader) throws IOException {
         String line;
-        while ((line = reader.readLine()).isEmpty()) {
+        while (!(line = reader.readLine()).isEmpty()) {
             String[] headerParts = line.split(":");
             headers.put(headerParts[0].trim(), headerParts[1].trim());
+        }
+    }
+
+    private void parseBody(BufferedReader reader) throws IOException {
+        if (!headers.containsKey("Content-Length")) {
+            log("body 없음");
+            return;
+        }
+
+        int contentLength = Integer.parseInt(headers.get("Content-Length"));
+        char[] bodyChars = new char[contentLength];
+        int read = reader.read(bodyChars);
+        if (read != contentLength) {
+            throw new IOException("Fail to read entire body. Expected " + contentLength + " bytes, but read " + read);
+        }
+        String body = new String(bodyChars);
+        log("HTTP Message Body: " + body);
+
+        String contentType = headers.get("Content-Type");
+        if ("application/x-www-form-urlencoded".equals(contentType)) {
+            parseQueryParameters(body);
         }
     }
 
@@ -70,6 +95,16 @@ public class HttpRequest {
 
     public String getParameter(String name) {
         return queryParameter.get(name);
+    }
+
+    @Override
+    public String toString() {
+        return "HttpRequest{" +
+                "method='" + method + '\'' +
+                ", path='" + path + '\'' +
+                ", queryParameter=" + queryParameter +
+                ", headers=" + headers +
+                '}';
     }
 
     public String getHeader(String name) {

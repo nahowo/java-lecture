@@ -39,9 +39,19 @@ public class HttpResponse {
         bodyBuilder.append(body);
     }
 
+    @Override
+    public String toString() {
+        return "HttpResponse{" +
+                "writer=" + writer +
+                ", statusCode=" + statusCode +
+                ", bodyBuilder=" + bodyBuilder +
+                ", contentType='" + contentType + '\'' +
+                '}';
+    }
+
     public void flush() {
         int contentLength = bodyBuilder.toString().getBytes(UTF_8).length;
-        writer.println("HTTP/1.1 " + statusCode + " OK");
+        writer.println("HTTP/1.1 " + statusCode + " " + getReasonPhrase(statusCode));
         writer.println("Content-Type: " + contentType);
         writer.println("Content-Length: " + contentLength);
         writer.println();

@@ -13,9 +13,6 @@ public class ServletManager {
     private HttpServlet notFoundErrorServlet = new NotFoundServlet();
     private HttpServlet internalErrorServlet = new InternalErrorServlet();
 
-    public ServletManager() {
-    }
-
     public void add(String path, HttpServlet servlet) {
         servletMap.put(path, servlet);
     }

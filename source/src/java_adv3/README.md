@@ -250,6 +250,47 @@
 - 다운스트림 컬렉터를 이용해 복잡한 파이프라인을 쉽게 사용할 수 있다.
 
 # 섹션 11: Optional
+- NullPointerException
+  - 가독성 저하: null을 처리하기 위해 매번 조건문을 사용
+  - 의도 불분명: 메서드 시그니처만 보고 메서드가 null을 반환할 수 있다는 사실을 알기 어려움
+- Optional을 사용해 래핑하면 반환 결과가 있을 수도 있고 없을 수도 있다는 것을 의미한다. 
+### Optional 생성
+- Optional.of(T value): value가 확실하게 null이 아닐 때 사용, null이면 NPE
+- Optional.ofNullable(T value): 값이 null일 수도 있음, null이면 Optional.empty() 반환
+- Optional.empty(): 값이 없음을 표현
+### Optional 값 획득
+- isPresent(), isEmpty(): 값 존재 여부 확인
+- get(): 값이 있는 경우 반환, 없으면 NPE
+- orElse(T other): 값이 있으면 반환, 없으면 other 반환
+- orElseGet(Supplier<? extends T> supplier): 값이 있으면 반환, 없으면 Supplier 호출해 생성값 반환
+- orElseThrow(...): 값이 있으면 반환, 없으면 지정한 예외 던짐
+- or(Supplier<? extends Optional<? extends T>> supplier): 값이 있으면 해당 값의 Optinal을 그대로 반환, 없으면 supplier가 제공하는 다른 Optional 반환
+### Optional 값 처리
+- isPresent(Consumer<? super T> action): 값 존재하면 action 실행, 없으면 아무것도 안 함
+- isPresentOrElse(Consumer<? super T> action, Runnable emptyAction): 값 존재하면 action 실행, 없으면 emptyAction 실행
+- map(Function<? super T, ? extends U> mapper): 값 존재하면 mapper 적용한 결과 반환, 없으면 Optional.empty() 반환
+- flatMap(Function<? super T, ? extends Optional<? extends U>> mapper): map과 동일, Optional 반환 시 평탄화해 반환
+- filter(Predicate<? super T> predicate): 값이 있고 조건 만족 시 그대로 반환, 이외 Optional.empty() 반환
+- stream(): 값이 있으면 단일 요소를 담은 Stream<T> 반환, 없으면 빈 스트림 반환
+## 즉시 평가와 지연 평가
+- **즉시 평가(eager evaluation)**: 값을 바로 생성하거나 계산하는 것
+- **지연 평가(lazy evaluation)**: 값이 실제로 필요할 때까지 계산을 미루는 것
+- 자바는 기본적으로 즉시 평가를 사용한다. 
+- 지연 평가를 사용하기 위해 연산을 정의하는 시점과 연산을 실행하는 시점을 분리해야 한다. 람다를 사용해 이를 해결할 수 있다.
+### orElse() vs orElseGet()
+- orElse(): 보통 데이터를 받아 인자가 즉시 평가됨
+  - 값이 이미 존재할 가능성이 높거나 orElse()로 넘기는 객체/메서드가 생성 비용이 크지 않으면 사용해도 괜찮다. 
+- orElseGet(): 람다를 받아 인자가 지연 평가됨
+  - 값이 없을 때 Supplier를 통해 값을 생성하기 때문에 값이 있을 떄는 호출되지 않는다. 
+  - orElse()로 넘기는 객체/메서드가 생성 비용이 클 때 고려할 수 있다. 
+## Optional 베스트 프랙티스
+1. 반환 타입으로만 사용하고 필드에는 쓰지 말기
+2. 메서드 매개변수로 Optional 사용하지 말기
+3. 컬렉션이나 배열 타입을 Optional로 감싸지 말기: 컬렉션 자체적으로 비어 있음을 표현할 수 있음
+4. isPresent()와 get() 조합을 직접 사용하지 않기: get() 지양, 둘을 같이 쓰는 것은 사실상 조건문 null 체크
+5. orElseGet() vs orElse() 차이 분명히 이해하기: 즉시 평가 vs 지연 평가
+6. 무조건 Optional이 좋은 것은 아님: 항상 값이 있는 상황, 값이 없으면 예외가 더 자연스러운 상황, 흔히 채워져 있는 경우, 성능이 극도로 중요한 로우레벨 코드 등에서는 Optional 사용이 불필요할 수 있음
+
 # 섹션 12: 디폴트 메서드
 # 섹션 13: 병렬 스트림
 # 섹션 14: 함수형 프로그래밍
